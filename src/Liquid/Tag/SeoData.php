@@ -42,9 +42,16 @@ class SeoData extends AbstractTag
             $content .= '<meta name="twitter:card" content="summary">';
             $content .= '<meta name="twitter:site" content="@' . $config['twitter']['username'] . '">';
         }
+
+        if ($page->image) {
+            $content .= '<meta name="twitter:image" content="' . $config['url'] . $config['baseurl'] . $page->image . '">'."\r\n";
+            $content .= '<meta name="og:image" content="' . $config['url'] . $config['baseurl'] . $page->image . '">'."\r\n";
+        }
+        
         if (isset($config['google_site_verification'])) {
             $content .= '<meta name="google-site-verification" content="' . $config['google_site_verification'] . '">';
         }
+
         $content .= '<script type="application/ld+json">'."\r\n";
         $data = [
             'name' => $siteTitle,
