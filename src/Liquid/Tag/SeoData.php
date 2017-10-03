@@ -9,6 +9,6 @@ class SeoData extends AbstractTag
 {
     public function render(Context $context)
     {
-        return 'seo';
+        return '<seo/>';
     }
 }
