@@ -19,7 +19,10 @@ class SeoData extends AbstractTag
          */
 
         $config = $site->getConfig();
-        $siteTitle = isset($config['title']) ? strip_tags($config['title']) : '';
+        $siteTitle = isset($config['title']) ? strip_tags($config['title']) : null;
+        if (!$siteTitle) {
+            $siteTitle = isset($config['name']) ? strip_tags($config['name']) : '';
+        }
         $pageTitle = strip_tags($page->getTitle());
         $canonicalUrl = $site->url.$site->baseurl.$page->getUrl();
         $description = strip_tags($page->description ? $page->description : (isset($config['description']) ? $config['description'] : ''));
